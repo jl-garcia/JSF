@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="Connection1" className="oracle.jdeveloper.db.adapter.DatabaseProvider" credentialStoreKey="Connection1" xmlns="">
+      <Factory className="oracle.jdeveloper.db.adapter.DatabaseProviderFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="sid">
+            <Contents>XE</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oraDriverType">
+            <Contents>thin</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="port">
+            <Contents>1521</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="DeployPassword">
+            <Contents>true</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="user">
+            <Contents>sys</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="role">
+            <Contents>SYSDBA</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="subtype">
+            <Contents>oraJDBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="hostname">
+            <Contents>localhost</Contents>
+         </StringRefAddr>
+         <SecureRefAddr addrType="password"/>
+      </RefAddresses>
+   </Reference>
+   <Reference name="DemoWS" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://localhost:8080/University-1.0/NewWebService?wsdl" service="{http://webservices.lucasian.com/}NewWebService">
+                  <model name="{http://webservices.lucasian.com/}NewWebService" xmlns="http://oracle.com/ws/model">
+                     <types xmlns="http://oracle.com/oracle/webservices/mdds">
+                        <complexType elementQualified="false" namespace="http://webservices.lucasian.com/" localPart="eliminarCustomer" prefix="tns" xmlns="">
+                           <sequence minOccurs="1" maxOccurs="1">
+                              <part name="i" required="true" namespace="http://webservices.lucasian.com/" elementQualified="false">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="int"/>
+                              </part>
+                           </sequence>
+                        </complexType>
+                        <complexType elementQualified="false" namespace="http://webservices.lucasian.com/" localPart="eliminarCustomerResponse" prefix="tns" xmlns="">
+                           <sequence minOccurs="1" maxOccurs="1">
+                              <part name="return" required="true" namespace="http://webservices.lucasian.com/" elementQualified="false">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="boolean"/>
+                              </part>
+                           </sequence>
+                        </complexType>
+                        <types-in-elements/>
+                     </types>
+                     <service name="{http://webservices.lucasian.com/}NewWebService">
+                        <port name="NewWebServicePort" binding="{http://webservices.lucasian.com/}NewWebServicePortBinding" portType="{http://webservices.lucasian.com/}NewWebService">
+                           <soap addressUrl="http://localhost:8080/University-1.0/NewWebService" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="eliminarCustomer">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name="" message="{http://webservices.lucasian.com/}eliminarCustomer">
+                                 <message style="2" use="1" soapVersion="1" encodingStyle="" docLitWrapped="true" namespace="http://webservices.lucasian.com/" localPart="eliminarCustomer" xmlns="http://oracle.com/oracle/webservices/mdds">
+                                    <part name="parameters" required="true" xmlns="">
+                                       <type namespace="http://webservices.lucasian.com/" localPart="eliminarCustomer" prefix="tns"/>
+                                    </part>
+                                 </message>
+                              </input>
+                              <output name="" message="{http://webservices.lucasian.com/}eliminarCustomerResponse">
+                                 <message style="2" use="1" soapVersion="1" encodingStyle="" docLitWrapped="true" namespace="http://webservices.lucasian.com/" localPart="eliminarCustomerResponse" xmlns="http://oracle.com/oracle/webservices/mdds">
+                                    <part name="parameters" required="true" xmlns="">
+                                       <type namespace="http://webservices.lucasian.com/" localPart="eliminarCustomerResponse" prefix="tns"/>
+                                    </part>
+                                 </message>
+                              </output>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+</References>

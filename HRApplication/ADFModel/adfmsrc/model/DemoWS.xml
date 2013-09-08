@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="DemoWS" Package="model" BeanClass="model.DemoWS"
+          isJavaBased="false">
+  <MethodAccessor IsCollection="false" Type="java.lang.Boolean"
+                  id="eliminarCustomer" ReturnNodeName="Return">
+    <ParameterInfo id="i" Type="java.lang.Integer" isStructured="false"/>
+  </MethodAccessor>
+</JavaBean>
