@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>TODO supply a title</title>
+    </h:head>
+    <h:body>
+        <h3>Prime Faces</h3>
+        <h:panelGrid columns="4" footerClass="subtitle" 
+                     headerClass="subtitlebig" styleClass="medium" 
+                     columnClasses="subtitle,medium"> 
+
+            <p:pieChart id="sample" value="#{chartBean.sales2001}" legendPosition="w"  
+                        title="Sales 2001" style="width:400px;height:300px" />  
+
+            <p:pieChart id="custom" value="#{chartBean.sales2001}" legendPosition="e" fill="false" showDataLabels="true"  
+                        title="Details" style="width:400px;height:300px" sliceMargin="5" diameter="150" /> 
+        </h:panelGrid>
+        <h:panelGrid columns="4" footerClass="subtitle" 
+                     headerClass="subtitlebig" styleClass="medium" 
+                     columnClasses="subtitle,medium">
+            <p:pieChart id="sample1" value="#{chartBean.sales2002}" legendPosition="w"  
+                        title="Sales 2002" style="width:400px;height:300px" />  
+
+            <p:pieChart id="custom1" value="#{chartBean.sales2002}" legendPosition="e" fill="false" showDataLabels="true"  
+                        title="Details" style="width:400px;height:300px" sliceMargin="5" diameter="150" /> 
+        </h:panelGrid>
+    </h:body>
+</html>
