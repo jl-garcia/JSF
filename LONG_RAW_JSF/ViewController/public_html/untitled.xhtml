@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></meta>
+            <title>Demo JSF</title>
+        </head>
+        <body>
+            <h:form id="form1">
+                <ui:repeat value="#{flag.countryList}" var="country">
+                    <h:graphicImage id="image" alt="jsf-sun" url="/images/#{country.flag}">
+                    </h:graphicImage>
+                </ui:repeat>
+            </h:form>
+        </body>
+    </html>
+</f:view>
