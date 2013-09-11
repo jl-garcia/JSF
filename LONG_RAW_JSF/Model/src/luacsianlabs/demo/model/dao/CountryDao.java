@@ -31,32 +31,26 @@ import oracle.sql.RAW;
 
 import org.primefaces.model.DefaultStreamedContent;
 
-public class CountryDao {
-    public static void saveCountry(Country c, byte[] image) {
+public class CountryDao implements CountryDaoService{
+    public  void saveCountry(Connection conn, Country c, InputStream is, long fileLength) {
+        PreparedStatement pt = null;
+        int i = 1;
         try {
-            Connection conn = ConnOracle.getConnection();
-            PreparedStatement st =
-                conn.prepareStatement("INSERT INTO COUNTRIES(COUNTRY_ID, " +
-                                      "COUNTRY_NAME, FLAG, NAME_FLAG) VALUES(?,?,?,?)");
+            pt = conn.prepareStatement("INSERT INTO COUNTRIES " + "VALUES (?,?,?,?)");
+            pt.setString(i++, c.getCountryId());
+            pt.setString(i++, c.getCountryName());
+            pt.setString(i++, c.getFlag());
+            pt.setBinaryStream(i++, is, fileLength);
 
-            BLOB blob = BLOB.createTemporary(conn, true, 10);
-
-            OutputStream blob_os = blob.getBinaryOutputStream();
-            blob_os.write(image);
-            blob_os.flush();
-
-            int i = 1;
-            int x = 27;
-            st.setString(i++, c.getCountryId());
-            st.setString(i++, c.getCountryName());
-            st.setBlob(i++, blob);
-            st.setString(i++, c.getFlag());
-
-            System.out.println("Resultado de la ejecucion: " + st.executeUpdate());
+            System.out.println("Numero de registros insertados: "+pt.executeUpdate());                        
         } catch (SQLException f) {
             f.printStackTrace();
-        } catch (IOException f) {
-            f.printStackTrace();
+        } finally{
+            try {
+                pt.close();
+            } catch (SQLException f) {
+                f.printStackTrace();
+            }
         }
     }
 
@@ -69,7 +63,7 @@ public class CountryDao {
      * @throws SQLException
      * @throws IOException
      */
-    public static Country getCountry(Connection cn, String idCountry, String path) {
+    public  Country getCountry(Connection cn, String idCountry, String path) {
         Country c = new Country();
         Statement st = null;
         ResultSet rs = null;
@@ -107,7 +101,7 @@ public class CountryDao {
         return c;
     }
 
-    public static Collection<Country> getCountries(Connection cn, String path) throws SQLException {
+    public  Collection<Country> getCountries(Connection cn, String path) throws SQLException {
         Collection<Country> listCountries = null;
         Country c = null;
         PreparedStatement st = null;
@@ -151,7 +145,7 @@ public class CountryDao {
     }
 
 
-    public static Country getCountryDemo(Connection cn, String idCountry, String path) {
+    public  Country getCountryDemo(Connection cn, String idCountry, String path) {
         Country c = new Country();
         Statement st = null;
         ResultSet rs = null;

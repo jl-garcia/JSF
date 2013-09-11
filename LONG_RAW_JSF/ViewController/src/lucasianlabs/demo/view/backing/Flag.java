@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 
 import luacsianlabs.demo.model.dto.Country;
 import luacsianlabs.demo.model.bo.CountryBO;
+import luacsianlabs.demo.model.bo.CountryBOService;
 
 
 public class Flag {
@@ -13,9 +14,10 @@ public class Flag {
     private String img;
     private Country country;
     private Collection<Country> countryList;
+    private CountryBOService servicioBO;
 
     public Flag() {
-        
+        servicioBO = new CountryBO();
 
     }
 
@@ -41,6 +43,6 @@ public class Flag {
     }
 
     public Collection<Country> getCountryList() {
-        return CountryBO.getCountries(null);
+        return servicioBO.getCountries(null);
     }
 }

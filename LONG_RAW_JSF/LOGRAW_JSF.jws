@@ -1,7 +1,12 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <jws:workspace xmlns:jws="http://xmlns.oracle.com/ide/project">
    <hash n="adrs-workspace-properties">
-      <value n="adrs-instance-binding" v="DefaultServer"/>
+      <value n="adrs-instance-binding" v="Demo"/>
+      <value n="deploy-timeout" v="0"/>
+      <value n="runtime-application-name" v="LOGRAW_JSF"/>
+   </hash>
+   <hash n="adrs-workspace-weblogic-properties">
+      <value n="hot-class-reload" v="ide-default"/>
    </hash>
    <value n="appTemplateId" v="javaEEWebAppTemplate"/>
    <hash n="component-versions">

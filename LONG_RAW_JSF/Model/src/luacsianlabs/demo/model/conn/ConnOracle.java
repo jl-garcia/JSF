@@ -39,16 +39,10 @@ public class ConnOracle {
             Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "HR", "welcome1");
 
             Statement stmt = conn.createStatement();
-
-            //PreparedStatement pt = conn.prepareStatement("UPDATE COUNTRIES SET FLAG = ?, NAME_FLAG = ? WHERE COUNTRY_ID= ?");
-            //PreparedStatement pt = conn.prepareStatement("SELECT * FROM COUNTRIES WHERE NAME_FLAG != 'null'");
-            PreparedStatement pt = conn.prepareStatement("INSERT INTO COUNTRIES_BK " + "VALUES (?,?,?,?)");
-
+            PreparedStatement pt = conn.prepareStatement("INSERT INTO COUNTRIES " + "VALUES (?,?,?,?)");
             File fi = new File("C:\\Users\\Evaluacion\\Pictures\\flags\\china.gif");
             FileInputStream fis = new FileInputStream(fi);
-
             byte[] zipped = new byte[(int) fi.length()];
-            //  fis.read(zipped);
 
             Long lo = new Long("00010203040506070809");
             int i = 1;
@@ -57,13 +51,7 @@ public class ConnOracle {
             pt.setString(i++, fi.getName());
             pt.setBinaryStream(i++, fis, fi.length());
 
-            //System.out.println("Resultado de la ejecucionnnn: " + pt.executeUpdate());
-
-            ResultSet rs = pt.executeQuery();
-            int k = 1;
-            while (rs.next()) {
-                System.out.println("RESUTADO: " + k++);
-            }
+            System.out.println("Numero de registros insertados: "+pt.executeUpdate());
 
             stmt.close();
         } catch (SQLException e) {

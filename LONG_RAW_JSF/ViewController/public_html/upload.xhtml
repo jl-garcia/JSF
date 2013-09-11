@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Demo PrimeFaces</title>
+    </h:head>
+    <h:body>
+        <h:form>  
+             <p:fileUpload fileUploadListener="#{fileUploadController.upload}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" 
+             sizeLimit="100000" description="Select Images" >
+             
+             
+             <f:attribute name="idCountry" value="RS" />
+             <f:attribute name="nameCountry" value="Rusia" />
+             
+             </p:fileUpload>
+             
+             
+             
+             
+        </h:form>
+    </h:body>
+</html>

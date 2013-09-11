@@ -8,12 +8,18 @@ import javax.faces.event.PhaseId;
 
 import luacsianlabs.demo.model.bo.CountryBO;
 
+import luacsianlabs.demo.model.bo.CountryBOService;
+
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
 public class ImageStreamer {
+    
+    private CountryBOService servicioBO;
+    
     public ImageStreamer() {
         super();
+        servicioBO = new CountryBO();
     }
 
     private StreamedContent image;
@@ -30,7 +36,7 @@ public class ImageStreamer {
         } else {
             String id = context.getExternalContext().getRequestParameterMap().get("idImage");
             System.out.println("ID: " + id);
-            image = CountryBO.getCountry(id, null).getImageFlag();
+            image = servicioBO.getCountry(id, null).getImageFlag();
             return image;
         }
     }

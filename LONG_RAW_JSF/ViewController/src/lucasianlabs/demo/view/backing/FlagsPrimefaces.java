@@ -6,21 +6,26 @@ import javax.faces.component.html.HtmlForm;
 
 import luacsianlabs.demo.model.dto.Country;
 
+import org.primefaces.event.FileUploadEvent;
+
 public class FlagsPrimefaces {
 
-    private Collection<Country> countryList;
+    private String name;
 
     public FlagsPrimefaces() {
 
     }
 
-    public void setCountryList(Collection<Country> countryList) {
-        this.countryList = countryList;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Collection<Country> getCountryList() {
-        return countryList;
+    public String getName() {
+        return name;
     }
 
+        public void upload(FileUploadEvent event) {
+            System.out.println("nombreeee: "+ name);
+        }
 
 }
